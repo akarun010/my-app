@@ -5,7 +5,6 @@ function App() {
 
   return (
     <>
-    <Counter initialValue={10} />
     </>
   )
 }
