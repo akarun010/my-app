@@ -23,12 +23,15 @@ const QuoteGenerator = () => {
         apiCall() }, []);
 
   return (
-    <div>
-        <h1>Quote Generator</h1>
-        {loading && <p>Loading...</p>}
-        {error && <p>{error}</p>}
-        <p>{quote}</p>
-        <button onClick={apiCall}>Generate Quote</button>
+    <div className="w-full h-lvh flex items-center bg-[#E5E7EB] justify-center">
+        <div className="flex p-7 rounded-2xl gap-4 flex-col bg-white">
+            <h1 className="text-center text-3xl">Quote Generator</h1>
+            {loading && <p>Loading...</p>}
+            {error && <p className="bg-[#DC2626]">{error}</p>}
+            <p className="text-[#6B7280]">"{quote}"</p>
+            <p className="text-center">~ {author}</p>
+            <button className="bg-[#2563EB] cursor-pointer text-white rounded-lg p-2" onClick={apiCall}>Generate Quote</button>
+        </div>
     </div>
   )
 }
