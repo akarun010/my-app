@@ -9,6 +9,7 @@ const QuoteGenerator = () => {
     async function apiCall() {
         try {
             setLoading(true);
+            setError(null);
             const response = await axios.get("/quotes/random");
             setQuote(response.data.quote ?? response.data);
             setAuthor(response.data.author)
