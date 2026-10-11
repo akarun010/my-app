@@ -10,6 +10,8 @@ const QuoteGenerator = () => {
         try {
             setLoading(true);
             setError(null);
+            setQuote(null);
+            setAuthor(null);
             const response = await axios.get("/quotes/random");
             setQuote(response.data.quote ?? response.data);
             setAuthor(response.data.author)
@@ -29,8 +31,8 @@ const QuoteGenerator = () => {
             <h1 className="text-center text-3xl">Quote Generator</h1>
             {loading && <p>Loading...</p>}
             {error && <p className="bg-[#DC2626]">{error}</p>}
-            <p className="text-[#6B7280]">"{quote}"</p>
-            <p className="text-center">~ {author}</p>
+            {quote && <p className="text-[#6B7280]">"{quote}"</p>}
+            {author && <p className="text-center">~ {author}</p>}
             <button className="bg-[#2563EB] cursor-pointer text-white rounded-lg p-2" onClick={apiCall}>Generate Quote</button>
         </div>
     </div>
