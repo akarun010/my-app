@@ -1,15 +1,32 @@
-import { useState } from 'react'
-import Counter from './Counter'
-import QuoteGenerator from './QuoteGenerator'
-import InputApp from './InputApp'
+import { useContext } from "react";
+import { ThemeProvider, ThemeContext } from "./ThemeContext";
+import Dashboard from "./Dashboard";
+import Navbar from "./Navbar";
 
-function App() {
+function AppContent() {
+  const { themes } = useContext(ThemeContext);
 
   return (
-    <>
-    <InputApp />
-    </>
-  )
+    <div
+      style={{
+        backgroundColor: themes.background,
+        color: themes.color,
+        minHeight: "100vh",
+        transition: "all 0.3s ease",
+      }}
+    >
+      <Navbar />
+      <Dashboard />
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
+  );
+}
+
+export default App;
